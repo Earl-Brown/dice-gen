@@ -13,6 +13,7 @@ import { download, generateSTL } from '../../../utils/downloader'
 
 // Web worker
 import Worker from 'worker-loader!../../../subtractSolid.worker' // eslint-disable-line import/no-webpack-loader-syntax
+import { ConsoleSqlOutlined } from '@ant-design/icons'
 
 type Props = {}
 
@@ -49,7 +50,7 @@ const Downloader: React.FC<Props> = () => {
       if (passableGeometry) {
         const geometry = new GeometryGenerator(passableGeometry)
         newWorker.terminate()
-        download(projectName, { [die]: generateSTL(geometry) })
+        download(`${projectName}.${die}.zip`, { [die]: generateSTL(geometry) })
         setLoadingFaces(null)
         setLoadingDice(null)
       }

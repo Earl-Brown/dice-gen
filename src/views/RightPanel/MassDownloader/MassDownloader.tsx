@@ -63,7 +63,7 @@ const MassDownloader: React.FC<Props> = () => {
         newWorker.terminate()
         const newDownloadStrings = { ...downloadStrings, [die]: generateSTL(geometry) }
         if (dieList.indexOf(die) === dieList.length - 1) {
-          download(projectName, newDownloadStrings, () => {
+          download(`${projectName}.zip`, newDownloadStrings, () => {
             setLoadingDice(null)
             setLoadingFaces(null)
             setDownloading(false)
